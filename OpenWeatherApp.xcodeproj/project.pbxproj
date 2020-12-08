@@ -31,6 +31,9 @@
 		C1812F44257C2A7000930AAB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1812F43257C2A7000930AAB /* BaseViewController.swift */; };
 		C1812F49257C2AC900930AAB /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1812F48257C2AC900930AAB /* Scenes.swift */; };
 		C1BB1C67257C3D09005EB651 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BB1C66257C3D09005EB651 /* CollectionView.swift */; };
+		C1F494C9257EA0E7001A2F73 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F494C8257EA0E7001A2F73 /* WeatherDetailViewController.swift */; };
+		C1F494CE257EA0F9001A2F73 /* WeatherDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F494CD257EA0F9001A2F73 /* WeatherDetailPresenter.swift */; };
+		C1F494D3257EA10A001A2F73 /* WeatherDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F494D2257EA10A001A2F73 /* WeatherDetailInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,10 @@
 		C1812F43257C2A7000930AAB /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C1812F48257C2AC900930AAB /* Scenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenes.swift; sourceTree = "<group>"; };
 		C1BB1C66257C3D09005EB651 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		C1F494C8257EA0E7001A2F73 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
+		C1F494CD257EA0F9001A2F73 /* WeatherDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailPresenter.swift; sourceTree = "<group>"; };
+		C1F494D2257EA10A001A2F73 /* WeatherDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailInteractor.swift; sourceTree = "<group>"; };
+		C1F4958C257F5F38001A2F73 /* OpenWeatherApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenWeatherApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +147,7 @@
 				C113BEE8257BF3EE00F28921 /* Assets.xcassets */,
 				C113BEEA257BF3EE00F28921 /* LaunchScreen.storyboard */,
 				C113BEED257BF3EE00F28921 /* Info.plist */,
+				C1F4958C257F5F38001A2F73 /* OpenWeatherApp.entitlements */,
 				C113BEE5257BF3EB00F28921 /* OpenWeatherApp.xcdatamodeld */,
 			);
 			path = OpenWeatherApp;
@@ -198,6 +206,9 @@
 		C113BF24257BFC6B00F28921 /* WeatherDetail */ = {
 			isa = PBXGroup;
 			children = (
+				C1F494C8257EA0E7001A2F73 /* WeatherDetailViewController.swift */,
+				C1F494CD257EA0F9001A2F73 /* WeatherDetailPresenter.swift */,
+				C1F494D2257EA10A001A2F73 /* WeatherDetailInteractor.swift */,
 			);
 			path = WeatherDetail;
 			sourceTree = "<group>";
@@ -387,7 +398,9 @@
 			files = (
 				C1812F30257C205800930AAB /* LocationCoordinates.swift in Sources */,
 				C148C31B257D3581005CFED9 /* LocationManager.swift in Sources */,
+				C1F494D3257EA10A001A2F73 /* WeatherDetailInteractor.swift in Sources */,
 				C113BF40257C07EB00F28921 /* Endpoint.swift in Sources */,
+				C1F494C9257EA0E7001A2F73 /* WeatherDetailViewController.swift in Sources */,
 				C1812F49257C2AC900930AAB /* Scenes.swift in Sources */,
 				C1812F25257C14C000930AAB /* WeatherDataService.swift in Sources */,
 				C113BEDD257BF3EB00F28921 /* AppDelegate.swift in Sources */,
@@ -400,6 +413,7 @@
 				C148C325257D41F8005CFED9 /* GetCurrentLocation.swift in Sources */,
 				C113BEE7257BF3EB00F28921 /* OpenWeatherApp.xcdatamodeld in Sources */,
 				C1812F35257C24AB00930AAB /* GetWeatherData.swift in Sources */,
+				C1F494CE257EA0F9001A2F73 /* WeatherDetailPresenter.swift in Sources */,
 				C113BEDF257BF3EB00F28921 /* SceneDelegate.swift in Sources */,
 				C113BF32257BFD8200F28921 /* Architecture.swift in Sources */,
 				C148C320257D40B6005CFED9 /* LocationService.swift in Sources */,
@@ -572,6 +586,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OpenWeatherApp/OpenWeatherApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4667WB25NJ;
 				INFOPLIST_FILE = OpenWeatherApp/Info.plist;
@@ -581,6 +596,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.esodicentodos.OpenWeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -591,6 +607,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OpenWeatherApp/OpenWeatherApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4667WB25NJ;
 				INFOPLIST_FILE = OpenWeatherApp/Info.plist;
@@ -600,6 +617,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.esodicentodos.OpenWeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

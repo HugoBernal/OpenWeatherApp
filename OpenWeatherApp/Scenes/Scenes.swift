@@ -8,3 +8,4 @@
 import Foundation
 
 typealias CitiesInjector = VIPInjector<CitiesViewController, CitiesInteractorImpl, CitiesPresenterImpl>
+typealias WeatherDetailInjector = VIPInjector<WeatherDetailViewController, WeatherDetailInteractorImpl, WeatherDetailPresenterImpl>

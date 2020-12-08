@@ -205,3 +205,15 @@ extension VIPInjector where P.Configuration == Void, I.Configuration == Void {
         interactorConfiguration = ()
     }
 }
+
+extension VIPInjector where P.Configuration == Void {
+    init() {
+        presenterConfiguration = ()
+    }
+}
+
+extension VIPInjector where I.Configuration == Void {
+    init() {
+        interactorConfiguration = ()
+    }
+}

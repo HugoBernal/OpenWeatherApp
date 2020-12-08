@@ -16,7 +16,7 @@ protocol CitiesView {
     func startLoading()
     func stopLoading()
     func showErrorView(with description: String)
-    func goToDetailView(with weather: Weather)
+    func goToDetailView(with configuration: WeatherDetailInjector)
 }
 
 class CitiesViewController: BaseViewController, VIPView {
@@ -90,23 +90,10 @@ extension CitiesViewController: CitiesView {
         self.showAlert(with: description)
     }
 
-    func goToDetailView(with weather: Weather) {
-        let view = UIViewController()
-        view.view.backgroundColor = .red
-
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.frame = .init(x: 0, y: 0, width: 200, height: 200)
-        label.text = "\(weather.name) \(weather.main.temp)  \(weather.weather[0].description) "
-
-        view.view.addSubview(label)
-
-        NSLayoutConstraint.activate([
-            label.widthAnchor.constraint(equalTo: view.view.widthAnchor, multiplier: 0.8),
-            label.heightAnchor.constraint(equalTo: view.view.heightAnchor, multiplier: 0.3)
-        ])
-
-        navigationController?.pushViewController(view, animated: true)
+    func goToDetailView(with configuration: WeatherDetailInjector) {
+        let weatherDetailView = WeatherDetailViewController()
+        weatherDetailView.injector = configuration
+        navigationController?.pushViewController(weatherDetailView, animated: true)
     }
 }
 

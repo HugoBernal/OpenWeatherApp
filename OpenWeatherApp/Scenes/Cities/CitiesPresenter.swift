@@ -12,7 +12,7 @@ protocol CitiesPresenter {
     func startLoading()
     func stopLoading()
     func setupErrorView(with error: Error)
-    func showDetail(for weather: Weather)
+    func showDetail(with configuration: WeatherDetailInjector)
 }
 
 final class CitiesPresenterImpl: VIPPresenter {
@@ -57,11 +57,10 @@ extension CitiesPresenterImpl: CitiesPresenter {
         }
     }
 
-    func showDetail(for weather: Weather) {
+    func showDetail(with configuration: WeatherDetailInjector) {
         self.queue.async {
-            self.view.goToDetailView(with: weather)
+            self.view.goToDetailView(with: configuration)
         }
-
     }
 }
 

@@ -51,6 +51,7 @@ private extension Endpoint {
         url?.queryItems = query.map { $0.map { URLQueryItem(name: $0.key, value: $0.value) } }
 
         url?.queryItems?.append(.init(name: "appid", value: "235c44fd3b2c6d04eb25c42b59e70f27"))
+        url?.queryItems?.append(.init(name: "units", value: "metric"))
 
         return url?.url
     }

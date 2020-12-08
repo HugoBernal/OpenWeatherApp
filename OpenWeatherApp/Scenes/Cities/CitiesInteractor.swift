@@ -47,7 +47,9 @@ extension CitiesInteractorImpl: CitiesInteractor {
                 self.getWeatherData.getWeatherData(for: coordinates) { result in
                     switch result {
                     case .success(let weather):
-                        self.presenter.showDetail(for: weather)
+                        var weatherDetailInjector = WeatherDetailInjector()
+                        weatherDetailInjector.interactorConfiguration = .init(weather: weather)
+                        self.presenter.showDetail(with: weatherDetailInjector)
 
                     case .failure(let error):
                         self.presenter.setupErrorView(with: error)
@@ -66,7 +68,9 @@ extension CitiesInteractorImpl: CitiesInteractor {
         self.getWeatherData.getWeatherData(by: self.cities[cityIndex]) { result in
             switch result {
             case .success(let weather):
-                self.presenter.showDetail(for: weather)
+                var weatherDetailInjector = WeatherDetailInjector()
+                weatherDetailInjector.interactorConfiguration = .init(weather: weather)
+                self.presenter.showDetail(with: weatherDetailInjector)
             case .failure(let error):
                 self.presenter.setupErrorView(with: error)
             }
@@ -88,6 +92,7 @@ extension InteractionInjection {
             "Lima",
             "Quito",
             "Bogota",
+            "Medellin",
             "Caracas",
             "Mexico city",
             "Los Angeles",
@@ -95,7 +100,25 @@ extension InteractionInjection {
             "New York",
             "Toronto",
             "Montreal",
-            "Madrid"
+            "Madrid",
+            "Lisboa",
+            "Londres",
+            "Paris",
+            "Berlin",
+            "Roma",
+            "Amsterdam",
+            "Moscow",
+            "Istanbul",
+            "Oslo",
+            "Stockholm",
+            "Cairo",
+            "Johannesburg",
+            "New Delhi",
+            "Beijin",
+            "Tokio",
+            "Seoul",
+            "Sydney",
+            "Auckland"
         ]
     }
 }
