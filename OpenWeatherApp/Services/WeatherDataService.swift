@@ -23,6 +23,7 @@ extension ServiceInjection {
 final private class WeatherDataServiceAdapter: Service {
     struct Dependencies: ServiceDependencies {
         var networkClient: APINetworkClient = inject()
+        var storeManager: StoreManager = inject()
     }
 
     var dependencies: Dependencies
@@ -34,15 +35,58 @@ final private class WeatherDataServiceAdapter: Service {
 
 extension WeatherDataServiceAdapter: WeatherDataService {
     func getWeatherData(by name: String, onCompletion: @escaping GetWeatherDataCompletion) {
-        self.networkClient.request(
-            Endpoint<Weather>(query: ["q": name]),
-            onCompletion: onCompletion)
+        self.storeManager.read(by: name) { result in
+            switch result {
+            case .success(let weather):
+                onCompletion(.success(weather))
+            case .failure(let error):
+                print(error)
+                self.networkClient.request(Endpoint<Weather>(query: ["q": name])) { result in
+                    switch result {
+                    case .success(let weather):
+                        self.storeManager.save(model: weather) { result in
+                            switch result {
+                            case .success():
+                                onCompletion(.success(weather))
+                            case .failure(let error):
+                                print(error)
+                                onCompletion(.success(weather))
+                            }
+                        }
+                    case .failure(let error):
+                        onCompletion(.failure(error))
+                    }
+                }
+            }
+        }
     }
 
     func getWeatherData(for coordinates: LocationCoordinates, onCompletion: @escaping GetWeatherDataCompletion) {
-        self.networkClient.request(
-            Endpoint<Weather>(query: ["lat": coordinates.latitude,
-                                      "lon": coordinates.longitude]),
-            onCompletion: onCompletion)
+        self.storeManager.read(by: coordinates) { result in
+            switch result {
+            case .success(let weather):
+                onCompletion(.success(weather))
+            case .failure(let error):
+                print(error)
+                self.networkClient.request(
+                    Endpoint<Weather>(query: ["lat": coordinates.latitude,
+                                              "lon": coordinates.longitude])) { result in
+                    switch result {
+                    case .success(let weather):
+                        self.storeManager.save(model: weather, coordinates: coordinates) { result in
+                            switch result {
+                            case .success():
+                                onCompletion(.success(weather))
+                            case .failure(let error):
+                                print(error)
+                                onCompletion(.success(weather))
+                            }
+                        }
+                    case .failure(let error):
+                        onCompletion(.failure(error))
+                    }
+                }
+            }
+        }
     }
 }

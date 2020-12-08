@@ -114,7 +114,7 @@ extension InteractionInjection {
             "Cairo",
             "Johannesburg",
             "New Delhi",
-            "Beijin",
+            "Beijing",
             "Tokio",
             "Seoul",
             "Sydney",

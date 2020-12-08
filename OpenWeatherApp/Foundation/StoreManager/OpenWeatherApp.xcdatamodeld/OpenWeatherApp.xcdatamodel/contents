@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDMainData" representedClassName="CDMainData" syncable="YES" codeGenerationType="class">
+        <attribute name="humidity" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="pressure" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="temp" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="tempMax" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="tempMin" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWeather" inverseName="main" inverseEntity="CDWeather"/>
+    </entity>
+    <entity name="CDWeather" representedClassName="CDWeather" syncable="YES" codeGenerationType="class">
+        <attribute name="lat" optional="YES" attributeType="String"/>
+        <attribute name="lon" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="main" maxCount="1" deletionRule="Cascade" destinationEntity="CDMainData" inverseName="newRelationship" inverseEntity="CDMainData"/>
+        <relationship name="weather" toMany="YES" deletionRule="Cascade" destinationEntity="CDWeatherData" inverseName="newRelationship" inverseEntity="CDWeatherData"/>
+    </entity>
+    <entity name="CDWeatherData" representedClassName="CDWeatherData" syncable="YES" codeGenerationType="class">
+        <attribute name="main" attributeType="String"/>
+        <attribute name="weatherDescription" attributeType="String"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWeather" inverseName="weather" inverseEntity="CDWeather"/>
+    </entity>
+    <elements>
+        <element name="CDMainData" positionX="47.43359375" positionY="-272.8203125" width="128" height="133"/>
+        <element name="CDWeatherData" positionX="288.04296875" positionY="-229.3046875" width="135.4765625" height="88"/>
+        <element name="CDWeather" positionX="181.06640625" positionY="-576.16015625" width="128" height="118"/>
+    </elements>
+</model>

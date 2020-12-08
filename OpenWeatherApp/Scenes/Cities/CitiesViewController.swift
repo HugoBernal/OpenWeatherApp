@@ -33,6 +33,7 @@ class CitiesViewController: BaseViewController, VIPView {
             cellProvider: { (collectionView, indexPath, cities) -> UICollectionViewCell? in
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionCell.id, for: indexPath) as? CollectionCell
                 cell?.label.text = cities
+                cell?.label.textColor = .black
                 cell?.backgroundColor = #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9137254902, alpha: 1)
                 return cell
             })
