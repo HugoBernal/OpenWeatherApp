@@ -53,6 +53,7 @@ final class WeatherDetailViewController: BaseViewController, VIPView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 60, weight: .heavy)
         label.textColor = .white
+        label.accessibilityIdentifier = "XCTempLabel"
         return label
     }()
 

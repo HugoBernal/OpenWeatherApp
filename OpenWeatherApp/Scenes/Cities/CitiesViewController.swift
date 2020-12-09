@@ -46,6 +46,7 @@ class CitiesViewController: BaseViewController, VIPView {
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        collectionView.accessibilityIdentifier = "XCTCollectionView"
 
         collectionView.register(CollectionCell.self, forCellWithReuseIdentifier: CollectionCell.id)
         return collectionView

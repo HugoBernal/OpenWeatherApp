@@ -20,7 +20,7 @@ extension ServiceInjection {
     }
 }
 
-final private class WeatherDataServiceAdapter: Service {
+final class WeatherDataServiceAdapter: Service {
     struct Dependencies: ServiceDependencies {
         var networkClient: APINetworkClient = inject()
         var storeManager: StoreManager = inject()
